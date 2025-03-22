@@ -8,7 +8,7 @@ document.getElementById('searchBtn').addEventListener('click', function () {
 });
 
 function fetchWeather(city) {
-    const apiKey = '701f330ad129468fb8190653252203'; // Replace with your API key
+    const apiKey = '701f330ad129468fb8190653252203'; 
     const currentWeatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`;
     const forecastUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`;
 
@@ -56,11 +56,10 @@ function displayCurrentWeather(data) {
     document.getElementById('uv').textContent = data.current.uv;
     document.getElementById('feelsLike').textContent = `${data.current.feelslike_c}°C`;
 
-    // Update weather icon
     const conditionIcon = document.getElementById('conditionIcon');
     conditionIcon.className = getWeatherIcon(data.current.condition.text);
 
-    // Show weather info and hide error message
+    
     weatherInfo.style.display = 'grid';
     errorMessage.style.display = 'none';
 }
@@ -103,8 +102,6 @@ function getWeatherIcon(condition) {
 function updateBackground(condition) {
     const body = document.body;
     let background = '';
-
-    // Set background image based on weather condition
     if (condition.toLowerCase().includes('sunny')) {
         background = 'url("sunny.jpg")';
     } else if (condition.toLowerCase().includes('cloud')) {
